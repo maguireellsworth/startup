@@ -26,10 +26,10 @@ Too many indie developers get caught up in the development that their paying fol
 
 ### Key features
 
--Login, Logout, Register
--Follow developers/makers
--Ability to filter which posts you see
--Post your own updates
+- Login, Logout, Register
+- Follow developers/makers
+- Ability to filter which posts you see
+- Post your own updates
 
 
 ### Technologies
@@ -40,13 +40,13 @@ I am going to use the required technologies in the following ways.
 - **CSS** - Used to create a message board esque front page that has lots of color.
 - **React** - Reactive webdesign that allows the user to customize what is rendered on their frontpage and interact with the posts of those they follow.
 - **Service** - Will be used for the following:
-     -Login
-     -Retrieve posts
-     -Recieve user interactions with posts
+     - Login
+     - Retrieve posts
+     - Recieve user interactions with posts
 - **DB/Login** - Will be used for the following:
-     -Register users
-     -Store users, following lists, posts, and post interactions
-     -Can't make posts unless authenticated
+     - Register users
+     - Store users, following lists, posts, and post interactions
+     - Can't make posts unless authenticated
 - **WebSocket** - Notification system for post interaction and automatic loading of any new post-its
 
 ## 🚀 AWS deliverable
