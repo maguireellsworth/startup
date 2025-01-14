@@ -21,7 +21,7 @@ Too many indie developers get caught up in the development that their paying fol
 
 ### Design
 
-![Design image](/Photos/KMPmockup%20P2.png.png)
+![Design image](/Photos/KMPmockup%20P2.png)
 
 
 ### Key features
