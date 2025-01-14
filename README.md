@@ -1,62 +1,53 @@
-# Your startup name here
+# Keep Me Posted
 
 [My Notes](notes.md)
 
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+This application will allow you to follow your favorite developers and makers. Upon entering the application you will be taken to the homepage where you will find all the latest post-its (updates) from the projects you are following. You can also select a specific creator to see the last 10 updates that they have posted. Or create your own post-its for you own projects.
 
-
-> [!NOTE]
->  This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
-
-> [!NOTE]
->  If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
 
 ## 🚀 Specification Deliverable
 
-> [!NOTE]
->  Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
-
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown - used markdown cheat sheet for all added content
+- [x] A concise and compelling elevator pitch - added elevator pitch that even my grandma is proud of
+- [x] Description of key features - Short sweet and to the point list of key features 
+- [x] Description of how you will use each technology - Each technology is accounted for and ready for action
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references. - Van goh esque rendition of my beautiful website
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Too many indie developers get caught up in the development that their paying followers (go-fund-me, kickstarter, etc.) dont get updates, start to believe they've been scammed, and eventually start to demand their money back. That's where Keep Me Posted comes in. It's a low stress, low upkeep, and fun way for makers to tell their fans that they're still alive and working on their next favorite indie game. Posts can be as simple as a screenhot, heck, tell them you got out of bed today! Keep everyone updated on Keep Me Posted!
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](/Photos/KMPmockup%20P2.png.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+-Login, Logout, Register
+-Follow developers/makers
+-Ability to filter which posts you see
+-Post your own updates
+
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Correct uses of HTML structures including website header, options, and post-its. There will be two seperate pages: one for the login and another for the post-its.
+- **CSS** - Used to create a message board esque front page that has lots of color.
+- **React** - Reactive webdesign that allows the user to customize what is rendered on their frontpage and interact with the posts of those they follow.
+- **Service** - Will be used for the following:
+     -Login
+     -Retrieve posts
+     -Recieve user interactions with posts
+- **DB/Login** - Will be used for the following:
+     -Register users
+     -Store users, following lists, posts, and post interactions
+     -Can't make posts unless authenticated
+- **WebSocket** - Notification system for post interaction and automatic loading of any new post-its
 
 ## 🚀 AWS deliverable
 
