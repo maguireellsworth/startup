@@ -59,15 +59,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I added a login page, home page, settings page, and about page
+- [x] **Proper HTML element usage** - Still not completely sure the specific use case of each but to the best of my knowlegde they are correct
+- [x] **Links** - All the pages on my website are linked to each other through form submission or the links in the header
+- [x] **Text** - Each post contains a title a body for content and a signiture at the bottom
+- [x] **3rd party API placeholder** - Couldn't think of a third party applicable to my website so i will just display the weather in the corner and get that through some weather api
+- [x] **Images** - Images are placed in posts on the home page
+- [x] **Login placeholder** - login is located on index.html
+- [X] **DB data placeholder** - Posts will all be retrieved from the database
+- [x] **WebSocket placeholder** - Posts will be added to feed when new posts are made
 
 ## 🚀 CSS deliverable
 
