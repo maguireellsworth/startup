@@ -6,7 +6,7 @@
 
 ## CSS
 -All the center stuff
-`
+```
   main{
     display: flex;
     flex-direction: column;
@@ -14,18 +14,18 @@
     align-items: center;
     text-align: center;
   }
-`
+```
 -height inheritance
-`
+```
   html{
     height: 80%;
   }
   body{
     height: 20%;  -----> will be 20% of 80%
   }
-`
+```
 -Spacing
-`
+```
   *{
     margin: 0;              -----> reset everything
   }
@@ -35,9 +35,9 @@
     margin-bottom: 5%;
     margin-right: 5%;
   }
-`
+```
 -Sliding-Animations
-`
+```
   @keyframes fly-in-left{
     0%{
       transform: translateX(-200%);
@@ -46,13 +46,13 @@
       transform: translateX(0%);
     }
   }
-`
+```
 
 
 ## Bootstrap
 -just a bunch of already defined css rules that you can use to make the overall look of your website look better
 -Also allows cool functional css like the accordian
-`
+```
   <div class="accordion" id="accordionExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="headingOne">
@@ -67,4 +67,4 @@
       </div>
     </div>
   </div>
-`
+```
