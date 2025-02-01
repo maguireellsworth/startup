@@ -18,6 +18,8 @@ html{
 }
 body{
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 header{
@@ -68,7 +70,6 @@ form > *{
 }
 
 footer{
-    position: bottom;
     background: #b3c8cf;
     margin-top: auto;
 }
