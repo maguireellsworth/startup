@@ -1,0 +1,63 @@
+.fira-code {
+    font-family: "Fira Code", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+*{
+    margin: 0;
+    font-family: "Fira Code";
+    border: 1px red dashed;
+}
+
+html{
+    height: 100%;
+    background: #f1f0e8;
+}
+body{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+header{
+    background: #528799;
+    height: 6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+h1{
+    margin: .5em 0 0 1em;
+}
+
+.header-menu {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    border: none;
+}
+
+.header-link{
+    color: black;
+    text-decoration: none;
+}
+footer{
+    background: #b3c8cf;
+    margin-top: auto;
+    display:flex;
+    justify-content: space-around;
+}
+
+#contact{
+    display: flex;
+    flex-direction: column;
+}
+
+#weather{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
