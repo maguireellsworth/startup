@@ -14,8 +14,8 @@
                 <menu>
                     <ul class="header-menu">
                         <li><a href="index.html" class="header-link">Login</a></li>
-                        <li><a href="settings.html" class="header-link">Settings</a></li>
                         <li><a href="home.html" class="header-link">Home</a></li>
+                        <li><a href="settings.html" class="header-link">Post</a></li>
                         <li><a href="about.html" class="header-link">About</a></li>
                     </ul>
                 </menu>
@@ -23,39 +23,19 @@
         </header>
 
         <main>
-            <form method="get" action="settings.html" class="settings">
-                <fieldset>
-                    <legend>Filter Who's Posts to see</legend>
-                    <div>
-                        <input type="checkbox" id="LocalWartlessWitch" name="LocalWartlessWitch"/>
-                        <label for="LocalWartlessWitch">LocalWartlessWitch</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="FeyHunter" name="FeyHunter"/>
-                        <label for="FeyHunter">FeyHunter</label>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="Layers&Litches" name="Layers&Litches"/>
-                        <label for="Layers&Litches">Layers&Litches</label>
-                    </div>
-                </fieldset>
-                <fieldset>
-                    <label>Change Password</label>
-                    <input type="password" placeholder="Old Password" id="currentpassword" name="currentpassword">
-                    <input type="password" placeholder="New Password" id="newpassword" name="newpassword">
-                </fieldset>
-                <fieldset>
-                    <label>Change Display Name</label>
-                    <input type="text" placeholder="MajesticCentaur58" id="displayName" name="displayName">
-                </fieldset>
-                <fieldset>
-                    <legend>Allow push Notifications?</legend>
-                    <label for="radio1">Yes</label>
-                    <input type="radio" id="radio1" name="varRadio" value="radio1" />
-                    <label for="radio2">No</label>
-                    <input type="radio" id="radio2" name="varRadio" value="radio2" checked/>
-                  </fieldset>
-                <button type="submit">Save Changes</button>
+            <form class="">
+                <div>
+                    <label for="title">Title: </label>
+                    <input type="text" id="title" name="varTitle" placeholder="Awesome Title"/>
+                </div>
+                <div>
+                    <label for="content">Content: </label>
+                    <textarea placeholder="Write your story..."></textarea>
+                </div>
+                <div>
+                    <label for="image">Image: </label>
+                    <input type="file" id="content" name="content" accept="image/png, image/jpeg" />
+                </div>
             </form>
         </main>
 
