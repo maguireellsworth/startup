@@ -1,0 +1,12 @@
+.settings{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 5%;
+    padding: 2%;
+    border: 1px black solid;
+}
+
+.settings > fieldset{
+    margin: 1%;
+}
