@@ -5,6 +5,8 @@
         <title>KeepMePosted</title>
         <link rel="icon" href="./Photos/postitcard.png"/>
         <link rel="stylesheet" href="main.css" />
+        <link rel="stylesheet" href="home.css" />
+        
     </head>
     <body>
         <header>
@@ -13,8 +15,8 @@
                 <menu>
                     <ul class="header-menu">
                         <li><a href="index.html" class="header-link">Login</a></li>
-                        <li><a href="settings.html" class="header-link">Settings</a></li>
                         <li><a href="home.html" class="header-link">Home</a></li>
+                        <li><a href="settings.html" class="header-link">Post</a></li>
                         <li><a href="about.html" class="header-link">About</a></li>
                     </ul>
                 </menu>
@@ -22,28 +24,13 @@
         </header>
 
         <main>
-            <div>
+            <div class="search-bar">
                 <form method="get" action="home.html">
                     <input type="search" id="search" name="varSearch">
                     <button type="submit">Search</button>
                 </form>
             </div>
-            <div>
-                <hr />
-                <form method="get" action="home.html">
-                    <ul>
-                        <li list-style-type="none">
-                            <label for="title">Title: </label>
-                            <input type="text" id="title" name="varTitle">
-                        </li>
-                        <li>
-                            <label for="description">Content: </label>
-                            <textarea id="content" name="varContent"></textarea>
-                        </li>
-                    </ul>
-                    <button type="submit">Post!</button>
-                </form>
-                <hr />
+                
             </div>
             <div class="post">
                 <h2 class="title">New Cauldron!</h2>
@@ -51,20 +38,17 @@
                 <img src="Photos/witch_brew.jpg" width="200" height="200"/>
                 <h4 class="user">LocalWartlessWitch</h4>
             </div>
-            <hr />
             <div class="post">
                 <h2 class="title">Sword shattered during last raid of ogre den</h2>
                 <p>Looking for willing blacksmith to commission a new one and talented enchanter to imbue with Smite IV</p>
                 <h4 class="user">FeyHunter</h4>
             </div>
-            <hr />
             <div class="post">
                 <h2 class="title">Funding Goal Reached!</h2>
                 <p>Our first round of funding has reached its goal and we can now start on production of griffin down jackets!</p>
                 <img src="Photos/furcoat.jpg" width=10%>
                 <h4 class="user">Layers&Litches</h4>
             </div>
-            <hr />
         </main>
 
         <footer>

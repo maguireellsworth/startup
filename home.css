@@ -1,0 +1,16 @@
+.search-bar {
+    margin: 0.5em;
+    padding: 0.5em;
+    /* border: 1px solid black; */
+}
+
+#search {
+    width: 50%;
+    align-items: center;
+}
+
+.search-bar > form {
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+}
