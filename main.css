@@ -8,7 +8,7 @@
 *{
     margin: 0;
     font-family: "Fira Code";
-    border: 1px red dashed;
+    /* border: 1px red dashed; */
 }
 
 html{
@@ -60,4 +60,25 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media (orientation: portrait){
+    *{
+        font-size:xx-large;
+    }
+
+    h1{
+        font-size:2em;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    footer{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #contact, #weather{
+        align-items: center;
+    }
 }

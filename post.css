@@ -23,3 +23,15 @@ main{
 .post-content{
     grid-template-rows: 10em;
 }
+
+@media (orientation: portrait){
+    .post-content, .post-image, .post-title{
+        display: flex;
+        flex-direction: column;
+        /* height: 10em; */
+    }
+    
+    .content-text{
+        height: 15em;
+    }
+}

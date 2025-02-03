@@ -32,23 +32,4 @@ form > *{
     .sign-in-container{
         width: 90%;
     }
-
-    *{
-        font-size:xx-large;
-    }
-
-    h1{
-        font-size:2em;
-        margin-left: 0;
-        text-align: center;
-    }
-
-    footer{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #contact, #weather{
-        align-items: center;
-    }
 }
