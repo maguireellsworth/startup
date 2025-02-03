@@ -5,7 +5,7 @@
         <title>KeepMePosted</title>
         <link rel="icon" href="./Photos/postitcard.png"/>
         <link rel="stylesheet" href="main.css" />
-        <link rel="stylesheet" href="settings.css" />
+        <link rel="stylesheet" href="post.css" />
     </head>
     <body>
         <header>
@@ -23,19 +23,20 @@
         </header>
 
         <main>
-            <form class="">
-                <div>
+            <form class="post-form">
+                <div class="post-title">
                     <label for="title">Title: </label>
                     <input type="text" id="title" name="varTitle" placeholder="Awesome Title"/>
                 </div>
-                <div>
+                <div class="post-content">
                     <label for="content">Content: </label>
                     <textarea placeholder="Write your story..."></textarea>
                 </div>
-                <div>
+                <div class="post-image">
                     <label for="image">Image: </label>
                     <input type="file" id="content" name="content" accept="image/png, image/jpeg" />
                 </div>
+                <button type="submit">Post!</button>
             </form>
         </main>
 

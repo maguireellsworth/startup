@@ -1,0 +1,25 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.post-form{
+    width: 70%;
+    margin-top: 3em;
+    background-color: #E5E1DA;
+}
+
+.post-form > * {
+    margin: 1em;
+}
+
+.post-title, .post-content, .post-image{
+    display: grid;
+    grid-template-columns: 15% 85%;
+}
+
+.post-content{
+    grid-template-rows: 10em;
+}
