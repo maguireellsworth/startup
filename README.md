@@ -73,12 +73,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - I added a header and a sticky footer to all pages and correct content body elements where applicable.
+- [x] **Navigation elements** - Navagation elements in the header are no longer ugly. Simple but effective. Plus an easter egg if you find it(sorry not sorry)
+- [x] **Responsive to window resizing** - A bit janky at weird sizes but full size monitor and standard phones sizes are all flawless.
+- [x] **Application elements** - Found a color palette online that I liked and made posts look like post-its
+- [x] **Application text content** - Used 'Fira Code' for my font as it is kind of retro but not annoying
+- [x] **Application images** - Images now fit in their parent containers and are all consistent sizing
 
 ## 🚀 React part 1: Routing deliverable
 
