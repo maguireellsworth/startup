@@ -1,0 +1,16 @@
+.about-container{
+    margin: 2%;
+    padding: 0% 2% 2%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.title{
+    margin: 2%;
+}
+
+@media (orientation:portrait){
+    .about-container > p{
+        font-size: 10px;
+    }
+}

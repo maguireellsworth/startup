@@ -20,15 +20,9 @@ main{
     flex-direction: column;
 }
 
-/* .post{
-    border: 1px solid black;
-    margin: 5%;
-} */
-
 .post-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 450px));
-    /* grid-template-rows: repeat(auto-fit, minmax(450px, 450px)); */
     grid-auto-rows: minmax(450px, auto);
     gap: 1em;
     margin: 1em;
@@ -49,7 +43,7 @@ main{
 
 .post-image{
     max-width: 100%;
-    max-height: 300px; /* Adjust to your needs */
+    max-height: 300px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -67,8 +61,8 @@ main{
     }
 
     .post{
-        min-width: 100vw;
-        min-height: 100vw;
+        min-width: 80vw;
+        min-height: 80vw;
         display:flex;
         flex-direction: column;
         justify-content: space-around;
