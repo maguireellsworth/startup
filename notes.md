@@ -2,7 +2,7 @@
 
 
 ## Deploying files to the server
-./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s startup
+./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s <subdomain>
 
 ## CSS
 -All the center stuff
