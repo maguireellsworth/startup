@@ -21,11 +21,10 @@ main{
 }
 
 .home{
-    min-width: 100vw;
+    max-width: 100vw;
 }
 
 .post-container{
-    min-width: 80%;
     max-width: 100vw;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(450px, 450px));
