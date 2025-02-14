@@ -8,20 +8,23 @@
 *{
     margin: 0;
     font-family: "Fira Code";
+    /* height: 100vh; */
     /* border: 1px red dashed; */
 }
 
 html{
-    height: 100%;
+    min-height: 100vh;
     background: #f1f0e8;
 }
-body{
-    min-height: 100%;
+
+.app-container{
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 
-header{
+
+.header{
     background: #528799;
     height: 6em;
     display: flex;
@@ -44,12 +47,14 @@ h1{
     color: black;
     text-decoration: none;
 }
+
 footer{
     background: #b3c8cf;
     margin-top: auto;
     display:flex;
     justify-content: space-around;
 }
+
 .smudge_cat{
     max-width: 100%;
     max-height: 75px;
