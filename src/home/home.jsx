@@ -14,7 +14,7 @@ export function Home(){
                 <div className="post">
                     <h2 className="title">New Cauldron!</h2>
                     <p className="content">Better prepare for the spiciest potions youve never heard of!</p>
-                    <img src="public/witch_brew.jpg" className="post-image"/>
+                    <img src="/witch_brew.jpg" className="post-image"/>
                     <h4 className="user">LocalWartlessWitch</h4>
                 </div>
                 <div className="post">
@@ -25,7 +25,7 @@ export function Home(){
                 <div className="post">
                     <h2 className="title">Funding Goal Reached!</h2>
                     <p className="content">Our first round of funding has reached its goal and we can now start on production of griffin down jackets!</p>
-                    <img src="public/furcoat.jpg" className="post-image" />
+                    <img src="/furcoat.jpg" className="post-image" />
                     <h4 className="user">Layers&Litches</h4>
                 </div>
                 <div className="post">
