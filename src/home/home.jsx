@@ -8,6 +8,7 @@ export function Home({user}){
             <h3 className="userWelcome">{user}'s feed</h3>
             <div className='post-container'>
                 {posts.map((post) => {
+                    post = JSON.parse(post)
                     return(
                         <div className="post">
                         <h2 className="title">{post.title}</h2>

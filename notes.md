@@ -68,3 +68,7 @@
     </div>
   </div>
 ```
+
+## React
+  -Starting Server
+    ```npm run dev```
