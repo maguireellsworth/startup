@@ -7,7 +7,7 @@ import { Post } from './post/post';
 import { About } from './about/about';
 
 export default function App(){
-    const [users, setUsers] = React.useState(localStorage.getItem("users") || []);
+    
     return(
         <div className="app-container">
             <BrowserRouter>
@@ -26,7 +26,7 @@ export default function App(){
                 </header>
 
                 <Routes>
-                    <Route path="/" element={<Login setUsers={setUsers} users={users}/>} exact />
+                    <Route path="/" element={<Login />} exact />
                     <Route path="/home" element={<Home />} />
                     <Route path="/post" element={<Post />} />
                     <Route path="/about" element={<About />} />
