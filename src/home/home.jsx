@@ -1,15 +1,10 @@
 import React from 'react';
 import './home.css';
 
-export function Home(){
+export function Home({user}){
     return(
         <main className="home">
-            <div className="search-bar">
-                <form method="get" action="home.html">
-                    <input type="search" id="search" name="varSearch" />
-                    <button type="submit">Search</button>
-                </form>
-            </div>
+            <h3 className="userWelcome">{user}'s feed</h3>
             <div className="post-container">
                 <div className="post">
                     <h2 className="title">New Cauldron!</h2>

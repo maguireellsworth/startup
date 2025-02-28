@@ -29,7 +29,7 @@ export default function App(){
 
                 <Routes>
                     <Route path="/" element={<Login setUser={setUser}/>} exact />
-                    <Route path="/home" element={<Home />} />
+                    <Route path="/home" element={<Home user={user}/>} />
                     <Route path="/post" element={<Post />} />
                     <Route path="/about" element={<About />} />
                     <Route path="*" element={<NotFound />} />
