@@ -84,16 +84,16 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Bundled using Vite** - I did not complete this part of the deliverable.
-- [ ] **Components** - I did not complete this part of the deliverable.
-- [ ] **Router** - Routing between login and voting components.
+- [x] **Bundled using Vite** - website is viewable from localhost:5173 and updates whenever a change is made.
+- [x] **Components** - app, login, home, post, and about are all seperate components.
+- [x] **Router** - navigation is possible through the router paths which load each component successfully.
 
 ## 🚀 React part 2: Reactivity
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I have implemented the login and logout feature, posts can be made, and "new" posts are automatically loaded. LocalStorage is used for persistant data saving and a fake call to an api for the weather is being made.
+- [x] **Hooks** - I am using useState for localStorage saving, and useEffect for tracking state changes such as new posts being made.
 
 ## 🚀 Service deliverable
 
