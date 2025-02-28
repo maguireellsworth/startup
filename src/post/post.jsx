@@ -1,11 +1,14 @@
 import React from 'react';
 import './post.css';
+import { useNavigate } from 'react-router-dom';
+
 
 export function Post(user){
     const [title, setTitle] = React.useState("");
     const [content, setContent] = React.useState("");
     const [posts, setPosts] = React.useState(JSON.parse(localStorage.getItem("posts")) || []);
     const [image, setImage] = React.useState(null);
+    const navigate = useNavigate();
     
     function titleChange(e){
         setTitle(e.target.value);
@@ -19,6 +22,7 @@ export function Post(user){
         posts.push(JSON.stringify({title: title, content: content, username: user.user, image: image}))
         setPosts(posts);
         localStorage.setItem("posts", JSON.stringify(posts));
+        navigate("/home");
     }
 
     function imgUpload(e){
