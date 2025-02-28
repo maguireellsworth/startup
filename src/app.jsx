@@ -1,13 +1,15 @@
 import React from 'react';
 import './app.css';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useNavigate} from 'react-router-dom';
 import { Login } from './login/login';
 import { Home } from './home/home';
 import { Post } from './post/post';
 import { About } from './about/about';
 
 export default function App(){
-    
+    const [user, setUser] = React.useState(localStorage.getItem('user') || null);
+
+
     return(
         <div className="app-container">
             <BrowserRouter>
@@ -17,8 +19,8 @@ export default function App(){
                         <menu>
                             <ul className="header-menu">
                                 <li><NavLink to="" className="header-link">Login</NavLink></li>
-                                <li><NavLink to="home" className="header-link">Home</NavLink></li>
-                                <li><NavLink to="post" className="header-link">Post</NavLink></li>
+                                {user && <li><NavLink to="home" className="header-link">Home</NavLink></li>}
+                                {user && <li><NavLink to="post" className="header-link">Post</NavLink></li>}
                                 <li><NavLink to="about" className="header-link">About</NavLink></li>
                             </ul>
                         </menu>
@@ -26,7 +28,7 @@ export default function App(){
                 </header>
 
                 <Routes>
-                    <Route path="/" element={<Login />} exact />
+                    <Route path="/" element={<Login setUser={setUser}/>} exact />
                     <Route path="/home" element={<Home />} />
                     <Route path="/post" element={<Post />} />
                     <Route path="/about" element={<About />} />
