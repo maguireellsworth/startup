@@ -39,8 +39,7 @@ export function Home({user}){
             setPosts(posts);
             localStorage.setItem("posts", JSON.stringify(posts));
             setCounter(counter + 1);
-        }, 20000)
-        //TODO change back to 5000
+        }, 5000);
 
         return ()=> clearInterval(interval);
     }, [counter]);
