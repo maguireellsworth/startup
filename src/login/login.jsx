@@ -2,7 +2,7 @@ import React from 'react';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 
-export function Login({setUser}){
+export function Login({setUser, user}){
     const [users, setUsers] = React.useState(JSON.parse(localStorage.getItem("users")) || []);
     const [taken, setTaken] = React.useState(false);
     const [username, setUsername] = React.useState("");
@@ -51,6 +51,11 @@ export function Login({setUser}){
         console.log('register button pressed');
     }
 
+    function logoutUser(){
+        localStorage.removeItem("user");
+        setUser(null)
+    }
+
     function usernameChange(e){
         setUsername(e.target.value);
     }
@@ -68,11 +73,16 @@ export function Login({setUser}){
                     <div className="sign-in">
                         {taken && <p style={{color:"#FF0000"}}>Username already taken!</p>}
                         {!valid && <p style={{color:"#FF0000"}}>Username or Password are incorrect</p>}
-                        <p>Username:</p>
-                        <input type="text" placeholder="xXEpicGamerXx" onChange={usernameChange}/>
-                        <p>Password:</p>
-                        <input type="password" placeholder="password" onChange={passwordChange}/>
-                        <button onClick={loginUser}>Login</button>
+                        {!user && (
+                        <>
+                            <p>Username:</p>
+                            <input type="text" placeholder="xXEpicGamerXx" onChange={usernameChange}/>
+                            <p>Password:</p>
+                            <input type="password" placeholder="password" onChange={passwordChange}/>
+                            <button onClick={loginUser}>Login</button>
+                        </>
+                        )}
+                        {user && <button onClick={logoutUser}>Logout</button>}
                         <button  onClick={registerUser}>Sign-Up</button>
                     </div>
                 </div>
