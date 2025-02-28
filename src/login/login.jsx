@@ -42,6 +42,7 @@ export function Login({setUser}){
             localStorage.setItem("users", JSON.stringify(users));
             setTaken(false);
             localStorage.setItem("bool", JSON.stringify(false));
+            loginUser()
         }else{
             setTaken(true);
             localStorage.setItem("bool", JSON.stringify(true));
@@ -52,12 +53,10 @@ export function Login({setUser}){
 
     function usernameChange(e){
         setUsername(e.target.value);
-        // localStorage.setItem("username", username);
     }
 
     function passwordChange(e){
         setPassword(e.target.value);
-        // localStorage.setItem("password", password);
     }
 
 
