@@ -34,18 +34,18 @@ export function Login({setUser}){
     }
 
     function registerUser(){
-        if(!findUser(username)){
+        if(username != "" && password != "" && !findUser(username)){
             // users = JSON.parse(users);
             users.push(JSON.stringify({username: username, password:password}));
             setUsers(users);
             // setUsers(users);
             localStorage.setItem("users", JSON.stringify(users));
             setTaken(false);
-            localStorage.setItem("bool", JSON.stringify(false));
+            // localStorage.setItem("bool", JSON.stringify(false));
             loginUser()
         }else{
             setTaken(true);
-            localStorage.setItem("bool", JSON.stringify(true));
+            // localStorage.setItem("bool", JSON.stringify(true));
 
         }
         console.log('register button pressed');
@@ -67,7 +67,7 @@ export function Login({setUser}){
                 <div className="sign-in-container">
                     <div className="sign-in">
                         {taken && <p style={{color:"#FF0000"}}>Username already taken!</p>}
-                        {!valid && <p style={{color:"#FF0000"}}>Username or Password are incorect</p>}
+                        {!valid && <p style={{color:"#FF0000"}}>Username or Password are incorrect</p>}
                         <p>Username:</p>
                         <input type="text" placeholder="xXEpicGamerXx" onChange={usernameChange}/>
                         <p>Password:</p>
