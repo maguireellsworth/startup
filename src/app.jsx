@@ -8,7 +8,11 @@ import { About } from './about/about';
 
 export default function App(){
     const [user, setUser] = React.useState(localStorage.getItem('user') || null);
+    const weather = getWeather();
 
+    function getWeather(){
+        return {msg:"Super Sunny Today!", temp:"78℉", feel:"😎🌞"}
+    }
 
     return(
         <div className="app-container">
@@ -28,7 +32,7 @@ export default function App(){
                 </header>
 
                 <Routes>
-                    <Route path="/" element={<Login setUser={setUser}/>} exact />
+                    <Route path="/" element={<Login setUser={setUser} user={user}/>} exact />
                     <Route path="/home" element={<Home user={user}/>} />
                     <Route path="/post" element={<Post user={user}/>} />
                     <Route path="/about" element={<About />} />
@@ -45,8 +49,9 @@ export default function App(){
                         <p>See behind the screen here -----{'>'} <a href="https://github.com/maguireellsworth/startup">Github</a></p>
                     </div>
                     <div id="weather">
-                        <p>Super Sunny Today!</p>
-                        <p>78℉ 🌞😎</p>
+                        <p>{weather.msg}</p>
+                        <p>{weather.temp}</p>
+                        <p>{weather.feel}</p>
                     </div>
                 </footer>
         </BrowserRouter>
