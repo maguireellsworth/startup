@@ -2,10 +2,24 @@ import React from 'react';
 import './home.css';
 
 export function Home({user}){
+    const [posts, setPosts] = React.useState(JSON.parse(localStorage.getItem("posts")) || []);
     return(
         <main className="home">
             <h3 className="userWelcome">{user}'s feed</h3>
-            <div className="post-container">
+            <div className='post-container'>
+                {posts.map((post) => {
+                    return(
+                        <div className="post">
+                        <h2 className="title">{post.title}</h2>
+                        <p className="content">{post.content}</p>
+                        {/* <img src="/witch_brew.jpg" className="post-image"/> */}
+                        <h4 className="user">{post.username}</h4>
+                    </div>
+                    )
+                })}
+            </div>
+
+            {/* <div className="post-container">
                 <div className="post">
                     <h2 className="title">New Cauldron!</h2>
                     <p className="content">Better prepare for the spiciest potions youve never heard of!</p>
@@ -77,9 +91,7 @@ export function Home({user}){
                     <h2 className="title">Placeholder_Title</h2>
                     <p className="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor interdum felis sed tempor. Etiam vitae lacus ac nibh varius luctus in vitae neque. Pellentesque scelerisque ipsum non nibh auctor hendrerit. Donec vitae dui enim. Donec a arcu neque. Etiam sed volutpat eros, eu imperdiet elit. </p>
                     <h4 className="user">Placeholder_user</h4>
-                </div>
-                
-            </div>
+                </div> */}
         </main>
     )
 }
