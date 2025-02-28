@@ -5,6 +5,7 @@ export function Post(user){
     const [title, setTitle] = React.useState("");
     const [content, setContent] = React.useState("");
     const [posts, setPosts] = React.useState(JSON.parse(localStorage.getItem("posts")) || []);
+    const [image, setImage] = React.useState(null);
     
     function titleChange(e){
         setTitle(e.target.value);
@@ -15,9 +16,20 @@ export function Post(user){
     }
 
     function makePost(){
-        posts.push(JSON.stringify({title: title, content: content, user: user}))
+        posts.push(JSON.stringify({title: title, content: content, username: user.user, image: image}))
         setPosts(posts);
         localStorage.setItem("posts", JSON.stringify(posts));
+    }
+
+    function imgUpload(e){
+        const file = e.target.files[0];
+        if(file){
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = ()=>{
+                setImage(reader.result);
+            }
+        }
     }
 
     return(
@@ -33,7 +45,7 @@ export function Post(user){
                 </div>
                 <div className="post-image">
                     <label htmlFor="image">Image: </label>
-                    <input type="file" id="content" name="content" accept="image/png, image/jpeg" />
+                    <input type="file" onChange={imgUpload} accept="image/png, image/jpeg" />
                 </div>
                 <button type="submit" onClick={makePost}>Post!</button>
             </form>
