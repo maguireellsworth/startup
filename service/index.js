@@ -5,6 +5,7 @@ const uuid = require("uuid");
 const app = express();
 
 const users = [];
+const posts = []
 
 const CookieName = "token";
 
@@ -41,13 +42,38 @@ apiRouter.post("/auth/login", async (req, res) => {
 })
 
 apiRouter.delete('/auth/logout', async (req, res) => {
-    const user = await findUser('token', req.cookies[authCookieName]);
+    const user = await findUser('token', req.cookies[CookieName]);
     if (user) {
       delete user.token;
     }
-    res.clearCookie(authCookieName);
+    res.clearCookie(CookieName);
     res.status(204).end();
   });
+
+const verifyAuth = async (req, res, next) => {
+const user = await findUser('token', req.cookies[CookieName]);
+if (user) {
+    next();
+} else {
+    res.status(401).send({ msg: 'Unauthorized' });
+}
+};
+
+apiRouter.get('/posts', verifyAuth, async (req, res) => {
+    res.send(posts);
+})
+
+apiRouter.post('/post', verifyAuth, async (req, res) => {
+    const {title, content, username} = req.body;
+    if(!title || !content || !username){
+        res.status(400).send('Empty fields are not allowed');
+    }else{
+        posts.push(req.body);
+        res.send(req.body);
+    }
+})
+
+
 
 
 function setAuthCookie(res, authToken){
@@ -58,8 +84,8 @@ function setAuthCookie(res, authToken){
     });
 }
 
-function createUser(username, password){
-    const passHash = bcrypt.hash(password, 10);
+async function createUser(username, password){
+    const passHash = await bcrypt.hash(password, 10);
     const newUser = {
         username: username,
         password: passHash,

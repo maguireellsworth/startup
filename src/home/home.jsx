@@ -2,8 +2,19 @@ import React from 'react';
 import './home.css';
 
 export function Home({user}){
-    const [posts, setPosts] = React.useState(JSON.parse(localStorage.getItem("posts")) || []);
-    const [counter, setCounter] = React.useState(1);
+    // const [counter, setCounter] = React.useState(1);
+    const [posts, setPosts] = React.useState([]);
+
+
+    React.useEffect(() => {
+        fetch("/api/posts")
+            .then((response) => response.json())
+            .then((posts) => {
+                setPosts(posts)
+            });
+    }, []);
+
+
     const fakePosts = [
         {
             title: "This is a title",
@@ -32,17 +43,17 @@ export function Home({user}){
         }
     ]
 
-    React.useEffect(()=>{
-        const interval = setInterval(()=>{
-            const newPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
-            posts.push(JSON.stringify(newPost))
-            setPosts(posts);
-            localStorage.setItem("posts", JSON.stringify(posts));
-            setCounter(counter + 1);
-        }, 5000);
+    // React.useEffect(()=>{
+    //     const interval = setInterval(()=>{
+    //         const newPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
+    //         posts.push(JSON.stringify(newPost))
+    //         setPosts(posts);
+    //         localStorage.setItem("posts", JSON.stringify(posts));
+    //         setCounter(counter + 1);
+    //     }, 5000);
 
-        return ()=> clearInterval(interval);
-    }, [counter]);
+    //     return ()=> clearInterval(interval);
+    // }, [counter]);
 
     return(
         <main className="home">
