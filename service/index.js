@@ -68,7 +68,7 @@ apiRouter.post('/post', verifyAuth, async (req, res) => {
     if(!title || !content || !username){
         res.status(400).send('Empty fields are not allowed');
     }else{
-        posts.push(req.body);
+        posts.unshift(req.body);
         res.send(req.body);
     }
 })
