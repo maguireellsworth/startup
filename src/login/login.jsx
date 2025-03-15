@@ -3,57 +3,60 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 
 export function Login({setUser, user}){
-    const [users, setUsers] = React.useState(JSON.parse(localStorage.getItem("users")) || []);
     const [taken, setTaken] = React.useState(false);
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const navigate = useNavigate();
     const [valid, setValid] = React.useState(true);
 
-    function findUser(username, password = null){
-        // console.log(users);
-        for(let i = 0; i< users.length; i++){
-            let newuser = JSON.parse(users[i]); 
-            if((newuser.username === username && password === null)
-                || (newuser.username === username && newuser.password === password)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    function loginUser(){
-        if(findUser(username, password)){
-            console.log('login successful');
-            setUser(username)
-            localStorage.setItem('user', username);
+    async function loginUser(){
+        const response = await fetch("/api/auth/login", {
+            method: "post",
+            body: JSON.stringify({username: username, password: password}),
+            headers: {'Content-type': 'application/json; charset=UTF-8',}
+        })
+        if(response.status === 200){
+            setUser(response.body.username);
+            localStorage.setItem("user", response.body.username);
             navigate('/home');
         }else{
             setValid(false);
         }
+        // if(findUser(username, password)){
+        //     console.log('login successful');
+        //     setUser(username)
+        //     localStorage.setItem('user', username);
+        //     navigate('/home');
+        // }else{
+        //     setValid(false);
+        // }
     }
 
-    function registerUser(){
-        if(username != "" && password != "" && !findUser(username)){
-            // users = JSON.parse(users);
-            users.push(JSON.stringify({username: username, password:password}));
-            setUsers(users);
-            // setUsers(users);
-            localStorage.setItem("users", JSON.stringify(users));
-            setTaken(false);
-            // localStorage.setItem("bool", JSON.stringify(false));
-            loginUser()
-        }else{
+    async function registerUser(){
+        const response = await fetch('/api/auth/create', {
+            method: 'post',
+            body: JSON.stringify({username: username, password: password}),
+            headers: {'Content-type': 'application/json; charset=UTF-8',}
+        })
+        if(response.status === 200){
+            setValid(true);
+            setUser(username);
+            localStorage.setItem("user", username);
+            // navigate('/home');
+        }else if(response.status === 409){
             setTaken(true);
-            // localStorage.setItem("bool", JSON.stringify(true));
-
         }
+        
         console.log('register button pressed');
     }
 
-    function logoutUser(){
-        localStorage.removeItem("user");
-        setUser(null)
+    async function logoutUser(){
+        const response = await fetch("/api/auth/logout", {
+            method: "delete",
+
+        })
+        // localStorage.removeItem("user");
+        // setUser(null)
     }
 
     function usernameChange(e){
@@ -76,14 +79,14 @@ export function Login({setUser, user}){
                         {!user && (
                         <>
                             <p>Username:</p>
-                            <input type="text" placeholder="xXEpicGamerXx" onChange={usernameChange}/>
+                            <input type="text" placeholder="xXEpicGamerXx" onChange={usernameChange} />
                             <p>Password:</p>
-                            <input type="password" placeholder="password" onChange={passwordChange}/>
-                            <button onClick={loginUser}>Login</button>
+                            <input type="password" placeholder="password" onChange={passwordChange} />
+                            <button onClick={loginUser} disabled={!username || !password}>Login</button>
+                            <button  onClick={registerUser} disabled={!username || !password}>Sign-Up</button>
                         </>
                         )}
                         {user && <button onClick={logoutUser}>Logout</button>}
-                        <button  onClick={registerUser}>Sign-Up</button>
                     </div>
                 </div>
             </main>

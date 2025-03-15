@@ -3,6 +3,7 @@
 
 ## Deploying files to the server
 ./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s <subdomain>
+./deployReact.sh -k <yourpemkey> -h <yourdomain> -s <subdomain>
 
 ## CSS
 -All the center stuff
