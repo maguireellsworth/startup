@@ -16,8 +16,8 @@ export function Login({setUser, user}){
             headers: {'Content-type': 'application/json; charset=UTF-8',}
         })
         if(response.status === 200){
-            setUser(response.body.username);
-            localStorage.setItem("user", response.body.username);
+            setUser(username);
+            localStorage.setItem("user", username);
             navigate('/home');
         }else{
             setValid(false);
@@ -53,8 +53,14 @@ export function Login({setUser, user}){
     async function logoutUser(){
         const response = await fetch("/api/auth/logout", {
             method: "delete",
-
         })
+        .catch(() => {
+            // Logout failed. Assuming offline
+          })
+          .finally(() => {
+            localStorage.removeItem('user');
+            setUser(null);
+          });
         // localStorage.removeItem("user");
         // setUser(null)
     }

@@ -2,7 +2,7 @@ import React from 'react';
 import './home.css';
 
 export function Home({user}){
-    // const [counter, setCounter] = React.useState(1);
+    const [counter, setCounter] = React.useState(1);
     const [posts, setPosts] = React.useState([]);
 
 
@@ -43,31 +43,45 @@ export function Home({user}){
         }
     ]
 
-    // React.useEffect(()=>{
-    //     const interval = setInterval(()=>{
-    //         const newPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
-    //         posts.push(JSON.stringify(newPost))
-    //         setPosts(posts);
-    //         localStorage.setItem("posts", JSON.stringify(posts));
-    //         setCounter(counter + 1);
-    //     }, 5000);
+    React.useEffect(()=>{
+        const interval = setInterval(()=>{
+            const newPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
+            const loadPost = async () =>{
+                try{
+                    const response = await fetch('/api/post', {
+                        method: 'post',
+                        body: JSON.stringify(newPost),
+                        headers: {'Content-type': 'application/json; charset=UTF-8',}
+                    })
+                    fetch("/api/posts")
+                        .then((response) => response.json())
+                        .then((posts) => {
+                            setPosts(posts)
+                        });
+                }catch(error){
+                    console.log(error);
+                }
+            }
+            loadPost();
+            setCounter((prevcounter) => prevcounter + 1);
+        }, 5000);
 
-    //     return ()=> clearInterval(interval);
-    // }, [counter]);
+        return ()=> clearInterval(interval);
+    }, []);
 
     return(
         <main className="home">
             <h3 className="userWelcome">{user}'s feed</h3>
             <div className='post-container'>
-                {posts.map((post) => {
-                    post = JSON.parse(post)
+                {posts.map((post, index) => {
+                    // post = JSON.parse(post)
                     return(
-                        <div className="post">
-                        <h2 className="title">{post.title}</h2>
-                        <p className="content">{post.content}</p>
-                        <img src={post.image} className="post-image"/>
-                        <h4 className="user">{post.username}</h4>
-                    </div>
+                        <div className="post" key={index}>
+                            <h2 className="title">{post.title}</h2>
+                            <p className="content">{post.content}</p>
+                            <img src={post.image} className="post-image"/>
+                            <h4 className="user">{post.username}</h4>
+                        </div>
                     )
                 })}
             </div>
