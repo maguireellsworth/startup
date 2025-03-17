@@ -4,6 +4,10 @@ const express = require('express');
 const uuid = require("uuid");
 const app = express();
 
+require('dotenv').config();
+const apiKey = process.env.API_KEY;
+
+
 const users = [];
 const posts = []
 
@@ -73,7 +77,27 @@ apiRouter.post('/post', verifyAuth, async (req, res) => {
     }
 })
 
+apiRouter.get('/location', async (req, res) => {
+    try{
+        const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+        const response = await fetch(`http://ip-api.com/json/${ip}`);
+        const data = await response.json();
+        res.send({city: data.city});
+    }catch(error){
+        res.status(500).send({ msg: "Could not fetch location"});
+    }
+})
 
+apiRouter.get('/weather/:location', async (req, res) => {
+    try{
+        const location = req.params;
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}$q=${location}$aqi=no`;
+        const weather = await fetch(url);
+        res.send(weather);
+    }catch(error){
+        res.status(500).send({ msg: "Couldn't get the weather"});
+    }
+})
 
 
 function setAuthCookie(res, authToken){
