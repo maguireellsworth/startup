@@ -70,26 +70,6 @@ footer{
     justify-content: center;
 }
 
-#weather{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* border: black ,1px; */
-}
-
-.weather_data_container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 7em;
-}
-
-.weather_data{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 @media (orientation: portrait){
     *{
         font-size:xx-large;

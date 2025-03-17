@@ -6,49 +6,10 @@ import { Login } from './login/login';
 import { Home } from './home/home';
 import { Post } from './post/post';
 import { About } from './about/about';
+import { Weather } from './weather/weather';
 
 export default function App(){
     const [user, setUser] = useState(localStorage.getItem('user') || null);
-    const [weather, setWeather] = useState(null);
-    const [location, setLocation] = useState([]);
-    
-    
-    async function getWeather(){
-        const response = await fetch(`/api/weather`)
-            .then((response) => response.json())
-            .then((weather) => {
-                setWeather(weather);
-            })
-    }
-
-    // get the location and weather on mount
-    useEffect(() => {
-        try{
-            const getLocation = async () => {
-                const city = await fetch('/api/location');
-                setLocation(city);
-            };
-            // getLocation();
-            getWeather();
-        }catch(error) {
-            console.log("Couldn't get location: " + error)
-        }
-    }, [])
-
-
-    //get the weather every two minutes
-    // useEffect(() => {
-    //     const interval = setInterval(() => {
-    //         try{
-    //             getWeather();
-    //         }catch(error) {
-    //             console.log("Couldn't get the weather")
-    //             setWeather("something went wrong")
-    //         }
-    //     }, 120000);
-
-    //     return () => clearInterval(interval);
-    // }, [])
 
     return(
         <div className="app-container">
@@ -84,20 +45,7 @@ export default function App(){
                         <h4>Arch Wizard and Caretaker of KeepMePosted </h4>
                         <p>See behind the screen here -----{'>'} <a href="https://github.com/maguireellsworth/startup">Github</a></p>
                     </div>
-                    <div id="weather">
-                        {!weather && <p>Weather: Loading...</p>}
-                        {weather && (
-                            <>
-                                <img src={weather.current.condition.icon}/> 
-                                <div className="weather_data_container">
-                                    <p className="weather_data"><img src="/Thermastat.png" height="15em"/> {weather.current.temp_f}℉</p>
-                                    <p className="weather_data"><img src="/wind.png" height="15em"/> {weather.current.wind_mph}mph</p>
-                                    <p className="weather_data"><img src="/humidity.png" height="15em"/> {weather.current.humidity}%</p>
-                                    <p></p>
-                                </div>
-                            </>
-                        )}
-                    </div>
+                    <Weather/>
                 </footer>
         </BrowserRouter>
         </div>
