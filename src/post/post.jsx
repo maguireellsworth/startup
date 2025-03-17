@@ -24,6 +24,7 @@ export function Post(user){
             body: JSON.stringify({title: title, content: content, username: user.user}),
             headers: {'Content-type': 'application/json; charset=UTF-8',}
         })
+        console.log("Response Status:", response.status);
         if(response.status === 200){
             navigate('/home');
             // console.log("make post was successful!!!")
@@ -43,7 +44,7 @@ export function Post(user){
 
     return(
         <main>
-            <form className="post-form">
+            <div className="post-form">
                 <div className="post-title">
                     <label htmlFor="title">Title: </label>
                     <input type="text" onChange={titleChange} placeholder="Awesome Title"/>
@@ -53,7 +54,7 @@ export function Post(user){
                     <textarea className="content-text" onChange={contentChange} placeholder="Write your story..."></textarea>
                 </div>
                 <button type="submit" onClick={makePost}>Post!</button>
-            </form>
+            </div>
         </main>
     )
 }
