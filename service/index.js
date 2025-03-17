@@ -88,12 +88,32 @@ apiRouter.get('/location', async (req, res) => {
     }
 })
 
-apiRouter.get('/weather/:location', async (req, res) => {
+apiRouter.get('/weather', async (req, res) => {
     try{
-        const location = req.params;
-        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}$q=${location}$aqi=no`;
-        const weather = await fetch(url);
-        res.send(weather);
+        // const location = req.params;
+        // const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}$q=${location}$aqi=no`;
+        // const weather = await fetch(url);
+        // res.send(weather);
+        const data = {
+            "location": {
+                "name": "Provo",
+                "region": "Utah",
+                "country": "United States of America",
+            },
+            "current": {
+                "last_updated_epoch": 1742226300,
+                "last_updated": "2025-03-17 09:45",
+                "temp_f": 50.4,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                    "code": 1000
+                },
+                "wind_mph": 4.3,
+                "humidity": 44,
+            }
+        }
+        res.send(data);
     }catch(error){
         res.status(500).send({ msg: "Couldn't get the weather"});
     }
