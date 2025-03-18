@@ -4,30 +4,43 @@ import './weather.css';
 
 export function Weather(){
     const [weather, setWeather] = useState(null);
-    const [city, setCity] = useState([]);
+    const [city, setCity] = useState("");
 
     async function getWeather(){
-        const response = await fetch(`/api/weather/${city}`)
-            .then((response) => response.json())
-            .then((weather) => {
-                setWeather(weather);
-            })
+        if(city === ""){
+            console.log("didnt get weather");
+            console.log(city)
+            return;
+        }
+        try {
+            const response = await fetch(`/api/weather/${city}`);
+            const weather = await response.json();
+            setWeather(weather);
+        } catch (error) {
+            console.log("Couldn't get weather", error);
+        }
     }
 
-    // get the location and weather on mount
     useEffect(() => {
-        try{
-            const getCity = async () => {
-                const city = await fetch('/api/location');
-                setCity(city);
-            };
-            getCity();
+        const getCity = async () => {
+            try {
+                const response = await fetch('/api/location');
+                const data = await response.json();
+                setCity(data.city);
+                setCity("Provo");
+            } catch (error) {
+                console.log("Couldn't get location:", error);
+            }
+        };
+    
+        getCity();
+    }, []);
+
+    useEffect(() => {
+        if (city !== "") {
             getWeather();
-        }catch(error) {
-            console.log("Couldn't get location: " + error)
-            setWeather(null);
         }
-    }, [])
+    }, [city]);
 
     // get the weather every two minutes
     useEffect(() => {
@@ -36,7 +49,6 @@ export function Weather(){
                 getWeather();
             }catch(error) {
                 console.log("Couldn't get the weather")
-                setWeather("something went wrong")
             }
         }, 120000);
 
@@ -53,7 +65,7 @@ export function Weather(){
     }else{
         return(
             <div id="weather">        
-                <img src={weather.current.condition.icon}/> 
+                <img className="weather_icon" src={weather.current.condition.icon}/> 
                 <div className="weather_data_container">
                     <p className="weather_data"><img src="/Thermastat.png" height="15em"/> {weather.current.temp_f}℉</p>
                     <p className="weather_data"><img src="/wind.png" height="15em"/> {weather.current.wind_mph}mph</p>

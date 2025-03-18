@@ -1,12 +1,10 @@
+require('dotenv').config({path: './service/api.env'});
+const apiKey = process.env.API_KEY;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const express = require('express');
 const uuid = require("uuid");
 const app = express();
-
-require('dotenv').config();
-const apiKey = process.env.API_KEY;
-
 
 const users = [];
 const posts = []
@@ -83,39 +81,42 @@ apiRouter.get('/location', async (req, res) => {
         const response = await fetch(`http://ip-api.com/json/${ip}`);
         const data = await response.json();
         res.send({city: data.city});
+        // const response = {city: "Provo"};
+        // res.send(response);
     }catch(error){
         res.status(500).send({ msg: "Could not fetch location"});
     }
 })
 
-apiRouter.get('/weather', async (req, res) => {
+app.get('/api/weather/:city', async (req, res) => {
     try{
-        // const location = req.params;
-        // const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}$q=${location}$aqi=no`;
-        // const weather = await fetch(url);
-        // res.send(weather);
-        const data = {
-            "location": {
-                "name": "Provo",
-                "region": "Utah",
-                "country": "United States of America",
-            },
-            "current": {
-                "last_updated_epoch": 1742226300,
-                "last_updated": "2025-03-17 09:45",
-                "temp_f": 50.4,
-                "condition": {
-                    "text": "Sunny",
-                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-                    "code": 1000
-                },
-                "wind_mph": 4.3,
-                "humidity": 44,
-            }
-        }
-        res.send(data);
+        const location = req.params;
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location.city}&aqi=no`;
+        const response = await fetch(url);
+        const weather = await response.json();
+        res.send(weather);
+        // const data = {
+        //     "location": {
+        //         "name": "Provo",
+        //         "region": "Utah",
+        //         "country": "United States of America",
+        //     },
+        //     "current": {
+        //         "last_updated_epoch": 1742226300,
+        //         "last_updated": "2025-03-17 09:45",
+        //         "temp_f": 50.4,
+        //         "condition": {
+        //             "text": "Sunny",
+        //             "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+        //             "code": 1000
+        //         },
+        //         "wind_mph": 4.3,
+        //         "humidity": 44,
+        //     }
+        // }
+        // res.send(data);
     }catch(error){
-        res.status(500).send({ msg: "Couldn't get the weather"});
+        res.status(500).send({ msg: error});
     }
 })
 
