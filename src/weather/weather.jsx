@@ -27,7 +27,7 @@ export function Weather(){
                 const response = await fetch('/api/location');
                 const data = await response.json();
                 setCity(data.city);
-                setCity("Provo");
+                // setCity("Provo");
             } catch (error) {
                 console.log("Couldn't get location:", error);
             }
