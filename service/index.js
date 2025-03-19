@@ -1,4 +1,7 @@
-require('dotenv').config({path: './service/api.env'});
+// require('dotenv').config({path: './service/api.env'});
+
+require('dotenv').config({ path: './api.env' });
+
 const apiKey = process.env.API_KEY;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
