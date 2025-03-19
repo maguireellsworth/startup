@@ -7,11 +7,6 @@ export function Weather(){
     const [city, setCity] = useState("");
 
     async function getWeather(){
-        if(city === ""){
-            console.log("didnt get weather");
-            console.log(city)
-            return;
-        }
         try {
             const response = await fetch(`/api/weather/${city}`);
             const weather = await response.json();
@@ -53,7 +48,7 @@ export function Weather(){
         }, 120000);
 
         return () => clearInterval(interval);
-    }, [])
+    }, [city])
 
 
     if(!weather || !weather.current){
