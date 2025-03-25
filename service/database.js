@@ -38,10 +38,20 @@ async function updateUser(user, uuid = null){
     }
 }
 
+async function getPosts(){
+    const posts = postCollection.find();
+    return await posts.toArray();
+}
+
+async function addPost(post){
+    await postCollection.insertOne(post);
+}
+
 module.exports = {
     getUser,
     getUserByToken,
     addUser,
     updateUser,
-
+    getPosts,
+    addPost
 };

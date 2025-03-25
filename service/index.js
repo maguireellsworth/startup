@@ -12,8 +12,6 @@ const DB = require('./database.js');
 
 const CookieName = "token";
 
-const posts = [];
-
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 app.use(express.json());
@@ -66,6 +64,7 @@ if (user) {
 };
 
 apiRouter.get('/posts', verifyAuth, async (req, res) => {
+    const posts = await DB.getPosts();
     res.send(posts);
 })
 
@@ -74,7 +73,8 @@ apiRouter.post('/post', verifyAuth, async (req, res) => {
     if(!title || !content || !username){
         res.status(400).send('Empty fields are not allowed');
     }else{
-        posts.unshift(req.body);
+        // posts.unshift(req.body);
+        await DB.addPost(req.body);
         res.send(req.body);
     }
 })
