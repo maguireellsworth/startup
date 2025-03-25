@@ -39,8 +39,8 @@ async function updateUser(user, uuid = null){
 }
 
 async function getPosts(){
-    const posts = postCollection.find();
-    return await posts.toArray();
+    const posts =await postCollection.find().toArray();
+    return posts.reverse();
 }
 
 async function addPost(post){
