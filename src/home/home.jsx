@@ -64,7 +64,7 @@ export function Home({user}){
             }
             loadPost();
             setCounter((prevcounter) => prevcounter + 1);
-        }, 5000);
+        }, 10000);
 
         return ()=> clearInterval(interval);
     }, []);
