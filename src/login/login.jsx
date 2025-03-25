@@ -22,14 +22,6 @@ export function Login({setUser, user}){
         }else{
             setValid(false);
         }
-        // if(findUser(username, password)){
-        //     console.log('login successful');
-        //     setUser(username)
-        //     localStorage.setItem('user', username);
-        //     navigate('/home');
-        // }else{
-        //     setValid(false);
-        // }
     }
 
     async function registerUser(){
@@ -42,7 +34,7 @@ export function Login({setUser, user}){
             setValid(true);
             setUser(username);
             localStorage.setItem("user", username);
-            // navigate('/home');
+            navigate('/home');
         }else if(response.status === 409){
             setTaken(true);
         }
