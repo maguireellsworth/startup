@@ -8,11 +8,11 @@ const bcrypt = require("bcryptjs");
 const express = require('express');
 const uuid = require("uuid");
 const app = express();
-
-const users = [];
-const posts = []
+const DB = require('./database.js');
 
 const CookieName = "token";
+
+const posts = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
@@ -37,9 +37,10 @@ apiRouter.post("/auth/login", async (req, res) => {
     const user = await findUser("username", req.body.username);
     if(user){
         if(await bcrypt.compare(req.body.password, user.password)){
-            user.token = uuid.v4();
-            setAuthCookie(res, user.token);
-            res.send({username: user.username});
+            token = uuid.v4();
+            DB.updateUser(user, token);
+            setAuthCookie(res, token);
+            res.send({ username: user.username });
         }
     }else{
         res.status(401).send({msg: "Unauthorized"});
@@ -49,7 +50,7 @@ apiRouter.post("/auth/login", async (req, res) => {
 apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('token', req.cookies[CookieName]);
     if (user) {
-      delete user.token;
+      DB.updateUser(user);
     }
     res.clearCookie(CookieName);
     res.status(204).end();
@@ -98,26 +99,6 @@ app.get('/api/weather/:city', async (req, res) => {
         const response = await fetch(url);
         const weather = await response.json();
         res.send(weather);
-        // const data = {
-        //     "location": {
-        //         "name": "Provo",
-        //         "region": "Utah",
-        //         "country": "United States of America",
-        //     },
-        //     "current": {
-        //         "last_updated_epoch": 1742226300,
-        //         "last_updated": "2025-03-17 09:45",
-        //         "temp_f": 50.4,
-        //         "condition": {
-        //             "text": "Sunny",
-        //             "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
-        //             "code": 1000
-        //         },
-        //         "wind_mph": 4.3,
-        //         "humidity": 44,
-        //     }
-        // }
-        // res.send(data);
     }catch(error){
         res.status(500).send({ msg: error});
     }
@@ -139,14 +120,18 @@ async function createUser(username, password){
         password: passHash,
         token: uuid.v4()
     };
-    users.push(newUser);
+    await DB.addUser(newUser);
     return newUser;
 }
 
-function findUser(field, value){
-    if(!value) return null;
-    return users.find((u) => u[field] === value)
-}
+async function findUser(field, value) {
+    if (!value) return null;
+  
+    if (field === 'token') {
+      return DB.getUserByToken(value);
+    }
+    return DB.getUser(value);
+  }
 
 
 
