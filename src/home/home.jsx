@@ -14,12 +14,16 @@ export function Home({user}){
 
         // ws.current = new WebSocket('ws://localhost:3000');
         ws.current.onmessage = (event) => {
-            // console.log("Onmessage message!!!!!!!!")
-            const data = JSON.parse(event.data);
-            if(data.type === 'new-post'){
-                setPosts((posts) => [data.post, ...posts]);
-                // setPosts([...posts, data.post]);
+            try{
+                const data = JSON.parse(event.data);
+                if(data.type === 'new-post'){
+                    setPosts((posts) => [data.post, ...posts]);
+                    // setPosts([...posts, data.post]);
+                }
+            }catch(e){
+                console.warn("Received non-JSON message: ", event.data);
             }
+            
         }
 
         fetch("/api/posts")

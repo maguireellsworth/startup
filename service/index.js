@@ -111,6 +111,13 @@ app.get('/api/weather/:city', async (req, res) => {
     }
 })
 
+const path = require('path');
+
+// Catch-all: serve index.html for any unmatched route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 function setAuthCookie(res, authToken){
     res.cookie(CookieName, authToken, {
