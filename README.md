@@ -119,8 +119,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection** - Back end has WebSocketHandler which listens for connections
+- [x] **Frontend makes WebSocket connection** - When the homepage mounts a websocket connectins is established
+- [x] **Data sent over WebSocket connection** - When a new post is made it is sent to the /post http route and then sent to each client through the websocket connections
+- [x] **WebSocket data displayed** - When a new post is made the client onmessage method sets the new posts and displays the new content
+- [x] **Application is fully functional** - All parts have been tested and are functional as far as I am aware
