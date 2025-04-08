@@ -9,6 +9,7 @@ const express = require('express');
 const uuid = require("uuid");
 const app = express();
 const DB = require('./database.js');
+const { WebSocketHandler } = require('./webSocketHandler.js');
 
 const CookieName = "token";
 
@@ -135,6 +136,8 @@ async function findUser(field, value) {
 
 
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+WebSocketHandler(httpService);
