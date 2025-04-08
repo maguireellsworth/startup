@@ -8,7 +8,11 @@ export function Home({user}){
 
 
     React.useEffect(() => {
-        ws.current = new WebSocket('ws://localhost:3000');
+        const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
+        const host = window.location.host;
+        ws.current = new WebSocket(`${protocol}://${host}`);
+
+        // ws.current = new WebSocket('ws://localhost:3000');
         ws.current.onmessage = (event) => {
             // console.log("Onmessage message!!!!!!!!")
             const data = JSON.parse(event.data);
