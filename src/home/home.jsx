@@ -4,9 +4,19 @@ import './home.css';
 export function Home({user}){
     const [counter, setCounter] = React.useState(1);
     const [posts, setPosts] = React.useState([]);
+    const ws = React.useRef(null);
 
 
     React.useEffect(() => {
+        ws.current = new WebSocket('ws://localhost:3000');
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            if(data.type === 'new-post'){
+                setPosts((prevPosts) => [data.post, ...prevPosts]);
+            }
+        }
+
+
         fetch("/api/posts")
             .then((response) => response.json())
             .then((posts) => {
@@ -43,31 +53,32 @@ export function Home({user}){
         }
     ]
 
-    React.useEffect(()=>{
-        const interval = setInterval(()=>{
-            const newPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
-            const loadPost = async () =>{
-                try{
-                    const response = await fetch('/api/post', {
-                        method: 'post',
-                        body: JSON.stringify(newPost),
-                        headers: {'Content-type': 'application/json; charset=UTF-8',}
-                    })
-                    fetch("/api/posts")
-                        .then((response) => response.json())
-                        .then((posts) => {
-                            setPosts(posts)
-                        });
-                }catch(error){
-                    console.log(error);
-                }
-            }
-            loadPost();
-            setCounter((prevcounter) => prevcounter + 1);
-        }, 10000);
+    //websocket emulation
+    // React.useEffect(()=>{
+    //     const interval = setInterval(()=>{
+    //         const newPost = fakePosts[Math.floor(Math.random() * fakePosts.length)];
+    //         const loadPost = async () =>{
+    //             try{
+    //                 const response = await fetch('/api/post', {
+    //                     method: 'post',
+    //                     body: JSON.stringify(newPost),
+    //                     headers: {'Content-type': 'application/json; charset=UTF-8',}
+    //                 })
+    //                 fetch("/api/posts")
+    //                     .then((response) => response.json())
+    //                     .then((posts) => {
+    //                         setPosts(posts)
+    //                     });
+    //             }catch(error){
+    //                 console.log(error);
+    //             }
+    //         }
+    //         loadPost();
+    //         setCounter((prevcounter) => prevcounter + 1);
+    //     }, 10000);
 
-        return ()=> clearInterval(interval);
-    }, []);
+    //     return ()=> clearInterval(interval);
+    // }, []);
 
     return(
         <main className="home">
