@@ -76,6 +76,12 @@ apiRouter.post('/post', verifyAuth, async (req, res) => {
     }else{
         // posts.unshift(req.body);
         await DB.addPost(req.body);
+        const post = {title: title, content: content, username: username};
+        WSHandler.clients.forEach(client => {
+            if(client.readyState === WebSocket.OPEN){
+                client.send(JSON.stringify({ type: "new-post", post}))
+            }
+        })
         res.send(req.body);
     }
 })
@@ -140,4 +146,4 @@ const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
-WebSocketHandler(httpService);
+const WSHandler = WebSocketHandler(httpService);

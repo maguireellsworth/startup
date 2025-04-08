@@ -8,11 +8,11 @@ function WebSocketHandler(httpServer){
         socket.send("connection has been made!!!")
 
         socket.on('message', function message(data){
-            socketServer.clients.forEach((client) => {
-                if(client !== socket && client.readyState === WebSocket.OPEN){
-                    client.send(data);
-                }
-            });
+            // socketServer.clients.forEach((client) => {
+            //     if(client !== socket && client.readyState === WebSocket.OPEN){
+            //         client.send(data);
+            //     }
+            // });
         });
 
         socket.on('pong', () => {
@@ -28,6 +28,8 @@ function WebSocketHandler(httpServer){
           client.ping();
         });
       }, 10000);
+
+      return socketServer;
 }
 
 
