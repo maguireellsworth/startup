@@ -1,7 +1,7 @@
 const { WebSocketServer } = require('ws');
 
 function WebSocketHandler(httpServer){
-    const socketServer = new WebSocketServer({ server: httpServer})
+    const socketServer = new WebSocketServer({ server: httpServer })
 
     socketServer.on('connection', (socket) => {
         socket.isAlive = true;
